@@ -3,7 +3,7 @@
     <q-header elevated class="quasar-gcp">
       <q-toolbar>
         <q-toolbar-title class='quasar-gcp--template-header-font'>
-          <router-link to="/">Quasar's Firebase & Cloud Firestore Template</router-link>
+          <router-link to="/">ES OnSight</router-link>
         </q-toolbar-title>
 
         <user-menu></user-menu>

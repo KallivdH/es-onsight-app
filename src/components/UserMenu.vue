@@ -28,6 +28,12 @@
           </q-item-section>
           <q-item-section>Log Off</q-item-section>
         </q-item>
+        <q-item clickable v-close-menu @click="routeClick('user')">
+          <q-item-section avatar>
+            <q-icon name="person"></q-icon>
+          </q-item-section>
+          <q-item-section>Profile</q-item-section>
+        </q-item>
       </q-list>
     </q-btn-dropdown>
   </div>

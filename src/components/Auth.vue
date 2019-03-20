@@ -54,7 +54,6 @@
         </template>
       </q-btn>
     </div>
-
   </form>
 </template>
 
@@ -110,7 +109,7 @@ export default {
           this.$q.notify({
             classes: 'text-weight-bold text-center',
             color: 'negative',
-            message: `Looks like there is an issue: ${error.message}`
+            message: `Het lijkt er op dat er een fout is opgetreden: ${error.message}`
           })
           this.loading = false
         })
@@ -122,7 +121,7 @@ export default {
         this.$q.notify({
           classes: 'text-weight-bold text-center',
           color: 'negative',
-          message: 'Your credentials are invalid'
+          message: 'Uw Inloggegevens zijn ongeldig'
         })
         setTimeout(() => {
           this.loading = false
@@ -135,7 +134,7 @@ export default {
         this.$q.notify({
           classes: 'text-weight-bold text-center',
           color: 'negative',
-          message: 'Your passwords don\'t match'
+          message: 'Uw wachtwoorden komen niet overeen'
         })
         setTimeout(() => {
           this.loading = false

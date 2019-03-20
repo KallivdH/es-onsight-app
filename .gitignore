@@ -13,6 +13,7 @@ yarn-error.log*
 
 # Editor directories and files
 .idea
+es-onsight-app-firebase-adminsdk-qmd8c-f56f8e9376.json
 .vscode
 .env*
 *.suo

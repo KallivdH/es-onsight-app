@@ -11,7 +11,20 @@ const routes = [
       {
         name: 'Home',
         path: '',
-        component: () => import('pages/Index.vue')
+        component: () => import('pages/Index.vue'),
+        meta: {
+          requiresAuth: true,
+          verifiedAcc: true
+        }
+      },
+      {
+        name: 'Groepen',
+        path: 'groepen',
+        component: () => import('components/Groups.vue'),
+        meta: {
+          requiresAuth: true,
+          verifiedAcc: true
+        }
       }
     ]
   },
@@ -23,13 +36,7 @@ const routes = [
         name: 'Login',
         path: authRoutes.LOGIN,
         component: () => import('components/Auth.vue')
-      }
-    ]
-  },
-  {
-    path: '/',
-    component: () => import('layouts/Basic.vue'),
-    children: [
+      },
       {
         name: 'Register',
         path: authRoutes.REGISTER,
@@ -39,7 +46,7 @@ const routes = [
   },
   {
     path: '/',
-    component: () => import('layouts/Main.vue'),
+    component: () => import('layouts/Basic.vue'),
     children: [
       {
         name: 'User',

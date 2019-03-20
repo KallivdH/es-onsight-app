@@ -10,12 +10,15 @@ export default ({ app, router, Vue }) => {
   // Initialize app
   const currentConfig = process.env.firebaseConfig
 
+  let firestore = null
+
   console.log('PROCESS ENV OBJECT', process.env)
   // Make sure the firebase keys have been set accordingly
   if (currentConfig) {
     firebase.initializeApp(currentConfig)
+
     // Initialize Cloud Firestore through Firebase
-    const firestore = firebase.firestore()
+    firestore = firebase.firestore()
 
     // Add props to our Vue instance for easy access
     // in our app
@@ -40,7 +43,18 @@ export default ({ app, router, Vue }) => {
     return new Promise((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((user) => {
-          resolve(user)
+          user.user.sendEmailVerification().then(() => {
+            firestore.collection('users').doc(user.user.uid).set({
+              displayName: '',
+              groups: []
+            }).then(() => {
+              resolve(user)
+            }).catch(error => {
+              reject(error)
+            })
+          }).catch((error) => {
+            reject(error)
+          })
         })
         .catch(error => {
           reject(error)
