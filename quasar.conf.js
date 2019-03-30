@@ -27,6 +27,7 @@ module.exports = function (ctx) {
     framework: {
       components: [
         'QAvatar',
+        'QBtnToggle',
         'QLayout',
         'QHeader',
         'QFooter',
@@ -48,7 +49,8 @@ module.exports = function (ctx) {
         'QItemSection',
         'QItemLabel',
         'QInput',
-        'QDialog'
+        'QDialog',
+        'QCardActions'
       ],
 
       directives: [

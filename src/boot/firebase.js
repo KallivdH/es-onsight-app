@@ -61,4 +61,27 @@ export default ({ app, router, Vue }) => {
         })
     })
   }
+
+  // make all the group date update to the current day in the week
+  const moment = require('moment')
+
+  firestore.collection('groups').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      let date = moment(new Date(doc.data().date.seconds * 1000))
+      let updatedDate = moment().set({
+        'day': date.day(),
+        'hour': date.hour(),
+        'minute': date.minute(),
+        'second': 0
+      })
+
+      if (updatedDate.isBefore(new Date(moment()))) {
+        updatedDate.day(updatedDate.day() + 7)
+      }
+
+      firestore.collection('groups').doc(doc.id).update({
+        date: new Date(updatedDate)
+      })
+    })
+  })
 }
